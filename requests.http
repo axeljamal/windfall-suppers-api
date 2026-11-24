@@ -1,0 +1,28 @@
+# Try the API from VS Code (REST Client) or Rider. Run it first with:
+#   dotnet run --project src/WindfallSuppers.Api --urls http://localhost:5199
+@base = http://localhost:5199
+
+### Health
+GET {{base}}/health
+
+### Host offers a supper
+POST {{base}}/suppers
+X-User-Id: host-1
+Content-Type: application/json
+
+{ "title": "Squash soup and bread", "area": "Hove", "startsAtUtc": "2027-01-10T18:30:00Z", "seats": 4 }
+
+### Upcoming suppers in Hove
+GET {{base}}/suppers?area=hove
+
+### Guest books two seats (paste the id from the create response)
+@supperId = 00000000-0000-0000-0000-000000000000
+POST {{base}}/suppers/{{supperId}}/bookings
+X-User-Id: guest-1
+Content-Type: application/json
+
+{ "seats": 2 }
+
+### Guest cancels
+DELETE {{base}}/suppers/{{supperId}}/bookings/mine
+X-User-Id: guest-1
