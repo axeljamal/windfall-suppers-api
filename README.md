@@ -11,7 +11,7 @@ dotnet run --project src/WindfallSuppers.Api --urls http://localhost:5199
 dotnet test
 ```
 
-The database is created and migrated on start-up. Try the endpoints with `requests.http`, or read the OpenAPI document at `/openapi/v1.json`.
+The database is created and migrated on start-up. In Development it also gets three sample Brighton and Hove suppers, and http://localhost:5199 opens interactive API docs (Scalar) where you can send requests from the browser. The OpenAPI document is at `/openapi/v1.json`, and `requests.http` has ready-made requests for VS Code or Rider.
 
 | Method | Route | What it does |
 |---|---|---|
